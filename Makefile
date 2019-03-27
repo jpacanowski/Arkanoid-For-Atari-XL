@@ -3,7 +3,7 @@ AS = ca65
 LD = cl65
 
 TARGET = atari
-CFLAGS = -O -t $(TARGET)
+CFLAGS = -Osir -t $(TARGET)
 LDFLAGS = -t $(TARGET)
 OBJS = arkanoid.o
 
