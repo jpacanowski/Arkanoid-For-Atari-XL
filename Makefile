@@ -4,8 +4,9 @@ LD = cl65
 
 TARGET = atari
 CFLAGS = -Osir -t $(TARGET)
+ASFLAGS = -t $(TARGET)
 LDFLAGS = -t $(TARGET)
-OBJS = arkanoid.o
+OBJS = arkanoid.o ataristd.o
 
 PROGRAM = arkanoid.xex
 
@@ -15,7 +16,7 @@ $(PROGRAM): $(OBJS)
 	$(LD) $(LDFLAGS) -o $@ $(OBJS) $(TARGET).lib
 
 %.o: %.s
-	$(AS) $(CFLAGS) $< -o $@
+	$(AS) $(ASFLAGS) $< -o $@
 
 %.o: %.c
 	$(CC) -c $(CFLAGS) $< -o $@
@@ -25,4 +26,4 @@ clean:
 	rm -f *.xex
 
 run:
-	atari800 $(PROGRAM)
+	atari800 $(PROGRAM) -sound -mouse joy
